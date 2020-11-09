@@ -1,5 +1,6 @@
 #include <cmath>
 #include <assert.h>
+#include <iostream>
 #include "librairie.h"
 
 using namespace std;
@@ -21,7 +22,6 @@ int sumNumbers(string numbers) {
 
 bool isPrimeNumber(int number) {
    bool isPrime = true;
-
    if (number == 0 || number == 1 ) {
       isPrime = false;
    } else {
@@ -38,10 +38,17 @@ bool isPrimeNumber(int number) {
 
 bool isArmstrongNumber(string number) {
    int armstrongSum = 0;
+   int convertedNumber = 0;
+   int length = number.length() - 1;
+
    for(char digit : number) {
-      assert (isdigit(number));
-      armstrongSum += pow(digit, 3);
+      assert (isdigit(digit));
+      int convertedDigit = digit - '0';
+
+      armstrongSum += pow(convertedDigit, 3);
+
+      convertedNumber += pow(10, length--) * convertedDigit;
    }
-   // TODO: No usage of std::stoid()
-   return std::stoi(number) == armstrongSum;
+
+   return convertedNumber == armstrongSum;
 }

@@ -36,6 +36,7 @@ using namespace std;
 
 void printOption(Options option, string message, int width);
 
+
 int main() {
    const int MIN_VALUE =    0,
              MAX_VALUE = 1000;
@@ -101,7 +102,7 @@ int main() {
 
    } while(true);
 
-   return 0;
+   return EXIT_SUCCESS;
 }
 
 void printOption(Options option, string message, int width) {
