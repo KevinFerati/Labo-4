@@ -34,7 +34,7 @@ using namespace std;
 
 #define CLEAR_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
 
-void printOption(Options option, string message, int width);
+void printOption(const Options& option, const string& message, int width);
 
 
 int main() {
@@ -105,7 +105,7 @@ int main() {
    return EXIT_SUCCESS;
 }
 
-void printOption(Options option, string message, int width) {
+void printOption(const Options& option, const string& message, int width) {
    cout << right << setw(width)
         << (int) option << " " << message << endl;
 }

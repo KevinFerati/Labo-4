@@ -14,12 +14,14 @@ enum class Options {
    TRIGO
 };
 
+int strToInt(const std::string& str);
+
 bool isEven(int number);
 
-int sumNumbers(std::string numbers);
+int sumNumbers(const std::string& numbers);
 
 bool isPrimeNumber(int number);
 
-bool isArmstrongNumber(std::string number);
+bool isArmstrongNumber(const std::string& number);
 
 #endif //INC_4_LIBRAIRIE_H
