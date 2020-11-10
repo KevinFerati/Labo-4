@@ -24,4 +24,14 @@ bool isPrimeNumber(int number);
 
 bool isArmstrongNumber(const std::string& number);
 
+int random(int lower, int upper);
+
+void buffer(char& lowestLowercase, char& highestUppercase, int& length);
+
+void trigo(double angle, double& sine, double& cosine, double& tangent );
+
+bool repondOui(char valueTrue, char valueFalse, std::string question);
+
+
+
 #endif //INC_4_LIBRAIRIE_H

@@ -1,6 +1,7 @@
 #include <cmath>
 #include <cassert>
 #include <iostream>
+#include <string>
 #include "librairie.h"
 
 using namespace std;
@@ -70,4 +71,73 @@ bool isArmstrongNumber(const string& number) {
    }
 
    return strToInt(number) == armstrongSum;
+}
+
+// Returns a random integer between 2 given numbers
+int random(int number1, int number2){
+   // we need to find the lowest number and adapt the rand if that's the case
+   if (number1 < number2){
+      return rand() % (number2 - number1 + 1) + number1;
+   }else if(number2 < number1){
+      return rand() % (number1 - number2 + 1) + number2;
+   }else{ // if two are the same number, return this number
+      return number2;
+   }
+}
+
+// Returns the lowest Lowercase letter, HIghest Uppercase letter & length of the content in buffer
+void buffer(char& lowestLowercase, char& highestUppercase, int& length){
+   string buffer;
+   lowestLowercase = 255; // High value to ensure we go down
+   highestUppercase = 0;
+   length = 0;
+
+   // we get everything the user enters
+   getline(cin, buffer);
+
+   // loop through the string
+   for(char& c : buffer){
+      // Uppercase filter 90 = Z, 65 = A
+      if (int(c) <= 90 && int(c)>= 65){
+         if (int(c)> int(highestUppercase)){
+            highestUppercase = c;
+         }
+      }
+         // Lowercase filter 122 = z, 97 = a
+      else if (int(c) <= 122 && int(c)>= 97){
+         if (int(c)< int(lowestLowercase)){
+            lowestLowercase = c;
+         }
+      }
+      // and we keep count for each iterations
+      length++;
+   }
+   //if no lowercase were found, we put lowestLowerCase to O, making it null
+   lowestLowercase = lowestLowercase == 255 ? 0 : lowestLowercase;
+}
+
+
+// Returns the sine, cosine, tangent of a given angle
+void trigo(double angle, double& sine, double& cosine, double& tangent ){
+   double radian = angle*M_PI/180;
+   sine = sin(radian);
+   cosine = cos(radian);
+   tangent = tan(radian);
+}
+
+
+// returns true of false depending of the user answe to the given question
+bool repondOui(char valueTrue, char valueFalse, string question){
+
+   while (true){
+      cout << question << " [ " << valueTrue << " - " << valueFalse << " ] : ";
+      char answer;
+      cin >> answer;
+
+      if (toupper(answer) == toupper(valueTrue)){
+         return true;
+      }else if (toupper(answer) == toupper(valueFalse)){
+         return false;
+      }
+   }
 }
