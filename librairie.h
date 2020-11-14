@@ -26,7 +26,7 @@ bool isArmstrongNumber(const std::string& number);
 
 int random(int lower, int upper);
 
-void buffer(char& lowestLowercase, char& highestUppercase, int& length);
+void buffer(std::string buffer, char& lowestLowercase, char& highestUppercase, int& length);
 
 void trigo(double angle, double& sine, double& cosine, double& tangent );
 

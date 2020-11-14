@@ -86,25 +86,27 @@ int random(int number1, int number2){
 }
 
 // Returns the lowest Lowercase letter, HIghest Uppercase letter & length of the content in buffer
-void buffer(char& lowestLowercase, char& highestUppercase, int& length){
-   string buffer;
-   lowestLowercase = 255; // High value to ensure we go down
+void buffer(string buffer, char& lowestLowercase, char& highestUppercase, int& length){
+   const int MAX_UPPER = 90;
+   const int MIN_UPPER = 65;
+   const int MAX_LOWER = 122;
+   const int MIN_LOWER = 97;
+   const int LOWER_INIT = MAX_LOWER + 1;
+
+   lowestLowercase = LOWER_INIT; // High value to ensure we go down
    highestUppercase = 0;
    length = 0;
-
-   // we get everything the user enters
-   getline(cin, buffer);
 
    // loop through the string
    for(char& c : buffer){
       // Uppercase filter 90 = Z, 65 = A
-      if (int(c) <= 90 && int(c)>= 65){
+      if (int(c) <= MAX_UPPER && int(c)>= MIN_UPPER){
          if (int(c)> int(highestUppercase)){
             highestUppercase = c;
          }
       }
          // Lowercase filter 122 = z, 97 = a
-      else if (int(c) <= 122 && int(c)>= 97){
+      else if (int(c) <= MAX_LOWER && int(c)>= MIN_LOWER){
          if (int(c)< int(lowestLowercase)){
             lowestLowercase = c;
          }
@@ -113,7 +115,7 @@ void buffer(char& lowestLowercase, char& highestUppercase, int& length){
       length++;
    }
    //if no lowercase were found, we put lowestLowerCase to O, making it null
-   lowestLowercase = lowestLowercase == 255 ? 0 : lowestLowercase;
+   lowestLowercase = lowestLowercase >= LOWER_INIT ? 0 : lowestLowercase;
 }
 
 

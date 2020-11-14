@@ -44,6 +44,9 @@ int main() {
    const int RANDOM_MIN_VALUE = -100,
              RANDOM_MAX_VALUE =  100;
 
+   const int MAX_ANGLE = 360,
+             MIN_ANGLE = 0;
+
    const int OPTIONS_WIDTH = 12;
 
    cout << "Bonjour" << endl
@@ -75,26 +78,115 @@ int main() {
 
       switch ((Options)optionsChoice) {
          case Options::IS_EVEN :
+            int number;
+            cout << "entrer une valeur : [" << MIN_VALUE << " - "<<MAX_VALUE<<"] : ";
+            cin>>number;
+            if (isEven(number)){
+               cout << number << " est une valeur pair" << endl;
+            }else{
+               cout << number << " est une valeur impair" << endl;
+            }
             break;
 
-         case Options::SUM_NUMBERS :
+         case Options::SUM_NUMBERS :{
+            string numbers;
+            cout << "entrer une valeur : [" << MIN_VALUE << " - "<<MAX_VALUE<<"] : ";
+            cin>>numbers;
+            cout << "la somme des chiffres " << numbers << " = " << sumNumbers(numbers) << endl;
+         }
             break;
 
+         /// DOES NOT WORK
+         // WHEN GIVEN 7, IT SHOULD RETURN TRUE
+         // ALSO, WHEN GIVING 0 TO start WE GET AN ERROR
          case Options::IS_PRIME_NUMBER :
+            int start, finish;
+            cout << "Determiner le snombres premiers compris dans un intervalle" << endl;
+            cout << "- debut : [" << MIN_VALUE << " - "<<MAX_VALUE<<"] : ";
+            cin >> start;
+            cout << "- fin : [20 - "<<MAX_VALUE<<"] : ";
+            cin >> finish;
+            for (int number = start; number < finish ; number++) {
+               if(isPrimeNumber(7)){
+                  cout << "le nombre " << number << " est un nombre premier" << endl;
+               }
+               cout << number;
+            }
+
+
+
             break;
 
          case Options::IS_ARMSTRONG_NUMBER :
+         {
+            int start, finish;
+            cout << "Determiner les nombres premiers compris dans un intervalle" << endl;
+            cout << "- debut : [" << MIN_VALUE << " - "<<MAX_VALUE<<"] : ";
+            cin >> start;
+            cout << "- fin : [20 - "<<MAX_VALUE<<"] : ";
+            cin >> finish;
+            for (int number = start; number < finish ; number++) {
+               if(isArmstrongNumber(to_string(number))){
+                  cout << "le nombre " << number << " est un nombre de Armstrong" << endl;
+               }
+            }
+         }
             break;
 
          case Options::RANDOM :
+         {
+            int min, max, number;
+            cout << "- min : [" << RANDOM_MIN_VALUE << " - "<< RANDOM_MAX_VALUE <<"] : ";
+            cin >> min;
+            cout << "- max : ["<< RANDOM_MIN_VALUE << " - "<< RANDOM_MAX_VALUE <<"] : ";
+            cin >> max;
+            cout << "- nbre : [" << MIN_VALUE << "- "<< RANDOM_MAX_VALUE <<"] : ";
+            cin >> number;
+
+            cout << "voici des valeurs aleatoires [" << min << " - " << max << "] : " << endl;
+
+            for (int i = 0; i < number ; i++) {
+               cout << random(min, max);
+               if (i != number - 1) {
+                  cout << ", ";
+               }
+            }
+            cout << endl << endl;
+         }
             break;
 
-         case Options::BUFFER :
+         case Options::BUFFER : {
+            string phrase;
+            char lowestLowerCase, higherUpperCase;
+            int length;
+            cout << "entrer une phrase : ";
+            // we get everything the user enters
+            getline(cin, phrase);
+            buffer(phrase, lowestLowerCase, higherUpperCase, length);
+            if (lowestLowerCase)
+               cout << "la plus petit minuscule : " << lowestLowerCase << endl;
+            if (higherUpperCase)
+               cout << "la plus grande majuscule : " << higherUpperCase << endl;
+            cout << "le nbre de caracteres : " << length << endl << endl;
+         }
             break;
 
          case Options::TRIGO :
-            break;
+            double angle, sine, cosine, tangent;
+            cout << "entrer un angle en degre : [" << MIN_ANGLE << " - " << MAX_ANGLE << "] : ";
 
+            cin>>angle;
+            trigo(angle, sine, cosine, tangent);
+            cout << "sin("<< angle << ") = " << sine << endl
+                  << "cos("<< angle << ") = " << cosine << endl
+                  << "tan("<< angle << ") = " << tangent << endl;
+
+            break;
+         case Options::QUIT :
+            if (repondOui('o', 'n', "Souhaitez-vous quitter l'appplication ?")){
+               return EXIT_SUCCESS;
+            }
+            break;
          default:
             cout << endl << "Option non disponible" << endl;
             continue;
