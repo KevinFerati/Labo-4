@@ -3,6 +3,8 @@
 
 #include <string>
 
+#define CLEAR_BUFFER cin.ignore(numeric_limits<streamsize>::max(), '\n')
+
 enum class Options {
    QUIT,
    IS_EVEN,
@@ -26,12 +28,12 @@ bool isArmstrongNumber(const std::string& number);
 
 int random(int lower, int upper);
 
-void buffer(std::string buffer, char& lowestLowercase, char& highestUppercase, int& length);
+void analyzeBuffer(std::string& buffer, char& lowestLowercase, char& highestUppercase, int& length);
 
 void trigo(double angle, double& sine, double& cosine, double& tangent );
 
-bool repondOui(char valueTrue, char valueFalse, std::string question);
+bool answerYes(char valueTrue, char valueFalse, const std::string& question);
 
-
+int askUserForInt(const std::string& message, int minValue, int maxValue);
 
 #endif //INC_4_LIBRAIRIE_H
