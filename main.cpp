@@ -78,9 +78,6 @@ int main() {
             break;
          }
 
-         /// DOES NOT WORK
-         // WHEN GIVEN 7, IT SHOULD RETURN TRUE
-         // ALSO, WHEN GIVING 0 TO start WE GET AN ERROR
          case Options::IS_PRIME_NUMBER : {
 
             cout << "Determiner les nombres premiers compris dans un intervalle" << endl;
