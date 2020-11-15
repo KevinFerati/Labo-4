@@ -65,12 +65,8 @@ int main() {
 
          case Options::IS_EVEN : {
             int number = askUserForInt(ASK_NUMBER_GENERIC_MESSAGE, MIN_VALUE, MAX_VALUE);
-            cout << number << " est une valeur ";
-            if (isEven(number)) {
-               cout << "pair" << endl;
-            } else {
-               cout << "impair" << endl;
-            }
+            cout << number
+                 << " est une valeur " << (isEven(number) ? "pair" : "impair") << endl;
             break;
          }
 
@@ -164,9 +160,11 @@ int main() {
                  << "tan(" << angle << ") = " << tangent << endl;
 
             break;
+
          case Options::QUIT :
             quit = answerYes(CONTINUE, QUIT, "Souhaitez-vous quitter l'appplication ?");
             break;
+
          default:
             cout << endl << "Option non disponible" << endl;
       }
