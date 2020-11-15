@@ -1,6 +1,6 @@
 /*
   ---------------------------------------------------------------------------
-  Fichier     : <fichier>.cpp
+  Fichier     : main.cpp
   Nom du labo : Labo 4 - Librairie
   Auteur(s)   : Kevin Ferati, Aurélien Richard
   Date        : 05.11.2020
